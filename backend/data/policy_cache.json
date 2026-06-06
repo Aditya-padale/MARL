@@ -1,0 +1,150 @@
+{
+  "047c3958fb9a9335": {
+    "policy_name": "Fuel Price Double Shock",
+    "policy_description": "A sudden 100% increase in petrol and diesel prices. This acts as a massive supply-side shock, increasing logistics, transport, and commuting costs across the economy. It disproportionately hurts gig workers and farmers, while triggering widespread inflation.",
+    "duration_steps": 12,
+    "affected_agents": {
+      "gig_worker": {
+        "expense_multiplier": 1.25
+      },
+      "farmer": {
+        "expense_multiplier": 1.2
+      },
+      "small_biz_owner": {
+        "expense_multiplier": 1.18
+      },
+      "young_professional": {
+        "expense_multiplier": 1.12
+      },
+      "student": {
+        "expense_multiplier": 1.12
+      },
+      "salaried_mid": {
+        "expense_multiplier": 1.1
+      },
+      "salaried_high": {
+        "expense_multiplier": 1.06
+      },
+      "govt_employee": {
+        "expense_multiplier": 1.1
+      },
+      "senior": {
+        "expense_multiplier": 1.1
+      },
+      "unemployed": {
+        "expense_multiplier": 1.15
+      }
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.08,
+      "healthcare_cost_index": 1.05,
+      "education_cost_index": 1.03,
+      "housing_cost_index": 1.04
+    },
+    "reasoning": "Fuel is an essential input for almost all physical goods and services. A 100% rise in petrol/diesel prices immediately inflates transportation and logistics costs. Gig workers (ride-hailing, delivery partners) and farmers (reliant on diesel for tractors, irrigation, and transporting produce) suffer the sharpest direct rise in expenses. Other classes experience secondary inflation as the cost of food and essential goods increases, driving global inflation up from 3% to 8%.",
+    "applied_at": 0,
+    "expires_at": -1,
+    "source": "unknown"
+  },
+  "915e75f7928ce074": {
+    "policy_name": "Fuel Price Shock (Petrol Doubling)",
+    "policy_description": "A sudden 100% increase in petrol prices nationwide, leading to a massive spike in transportation costs, logistics expenses, and cascading retail inflation across all sectors.",
+    "duration_steps": 12,
+    "affected_agents": {
+      "gig_worker": {
+        "expense_multiplier": 1.4,
+        "income_multiplier": 0.9
+      },
+      "farmer": {
+        "expense_multiplier": 1.25,
+        "income_multiplier": 0.95
+      },
+      "small_biz_owner": {
+        "expense_multiplier": 1.2,
+        "income_multiplier": 0.95
+      },
+      "salaried_mid": {
+        "expense_multiplier": 1.15
+      },
+      "young_professional": {
+        "expense_multiplier": 1.15
+      },
+      "salaried_high": {
+        "expense_multiplier": 1.08
+      },
+      "govt_employee": {
+        "expense_multiplier": 1.1
+      },
+      "student": {
+        "expense_multiplier": 1.12
+      },
+      "senior": {
+        "expense_multiplier": 1.1
+      },
+      "unemployed": {
+        "expense_multiplier": 1.15
+      }
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.085,
+      "housing_cost_index": 1.05,
+      "healthcare_cost_index": 1.08,
+      "education_cost_index": 1.05,
+      "employment_availability": 0.74
+    },
+    "reasoning": "A doubling of petrol prices acts as a massive regressive tax. Gig workers (delivery/ride-sharing) are hit hardest because fuel is their primary direct cost, causing their net income to drop alongside rising expenses. Farmers suffer from high diesel/petrol pump costs for machinery and transport of crops to market. Small businesses face high logistics costs which squeeze margins. All other agents face increased daily commute costs and indirect inflation on food and essential commodities, raising overall expenses. Global inflation is projected to rise to 8.5% from 3.2%, and employment drops slightly due to decreased business profitability and consumer demand.",
+    "applied_at": 0,
+    "expires_at": -1,
+    "source": "unknown"
+  },
+  "3344550e1564b7c7": {
+    "policy_name": "Fuel Price Doubling Shock",
+    "policy_description": "A sharp, sudden doubling of fuel prices (petrol and diesel) across the nation. This causes immediate supply-chain disruptions, hikes in transport fare, and increases the cost of agricultural inputs and daily commuting.",
+    "duration_steps": 12,
+    "affected_agents": {
+      "gig_worker": {
+        "expense_multiplier": 1.35
+      },
+      "farmer": {
+        "expense_multiplier": 1.25
+      },
+      "small_biz_owner": {
+        "expense_multiplier": 1.15
+      },
+      "unemployed": {
+        "expense_multiplier": 1.15
+      },
+      "senior": {
+        "expense_multiplier": 1.12
+      },
+      "student": {
+        "expense_multiplier": 1.1
+      },
+      "salaried_mid": {
+        "expense_multiplier": 1.1
+      },
+      "young_professional": {
+        "expense_multiplier": 1.1
+      },
+      "govt_employee": {
+        "expense_multiplier": 1.08
+      },
+      "salaried_high": {
+        "expense_multiplier": 1.05
+      }
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.078,
+      "market_return_multiplier": 0.92,
+      "credit_availability": 0.95,
+      "employment_availability": 0.73,
+      "housing_cost_index": 1.04,
+      "healthcare_cost_index": 1.05,
+      "education_cost_index": 1.03
+    },
+    "reasoning": "Fuel price hikes function as an indirect tax on the entire economy. Gig workers (delivery and ride-hailing partners) and farmers (who rely on diesel for tractors and pumps) face the most severe margin squeezes. Small business owners face increased logistics costs. General inflation rises sharply from 3.2% to 7.8% due to cascading transport costs on food and essential commodities, driving up expenses for all agents, especially vulnerable groups like seniors and the unemployed.",
+    "applied_at": 0,
+    "expires_at": -1,
+    "source": "unknown"
+  }
+}

@@ -1,0 +1,705 @@
+[
+  {
+    "policy_name": "Universal Basic Income (UBI)",
+    "policy_description": "Monthly cash transfer of ₹5,000 to all citizens below poverty line",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"welfare_payment": 5000},
+      "gig_worker": {"welfare_payment": 5000},
+      "student": {"welfare_payment": 5000},
+      "unemployed": {"welfare_payment": 5000},
+      "senior": {"welfare_payment": 5000}
+    },
+    "global_effects": {},
+    "reasoning": "UBI provides a safety net for the most vulnerable segments. Farmers, gig workers, students, unemployed, and seniors receive ₹5,000/month.",
+    "keywords": ["ubi", "universal", "basic", "income", "cash", "transfer", "monthly", "everyone", "all", "citizens"],
+    "key_terms": ["universal basic income", "ubi", "cash transfer"]
+  },
+  {
+    "policy_name": "Demonetization",
+    "policy_description": "50% of cash holdings frozen immediately, credit availability reduced",
+    "duration_steps": 90,
+    "affected_agents": {
+      "farmer": {"cash_freeze_fraction": 0.5},
+      "gig_worker": {"cash_freeze_fraction": 0.5},
+      "small_biz_owner": {"cash_freeze_fraction": 0.5},
+      "unemployed": {"cash_freeze_fraction": 0.5}
+    },
+    "global_effects": {
+      "credit_availability": 0.4,
+      "employment_availability": 0.5
+    },
+    "reasoning": "Demonetization hits cash-dependent workers hardest. Farmers, gig workers, small businesses lose access to 50% of cash. Employment and credit dry up temporarily.",
+    "keywords": ["demonetization", "demonetisation", "cash", "ban", "currency", "notes", "freeze"],
+    "key_terms": ["demonetization", "demonetisation", "cash ban"]
+  },
+  {
+    "policy_name": "GST Rate Hike",
+    "policy_description": "Increase GST from 18% to 28% on all goods and services",
+    "duration_steps": -1,
+    "affected_agents": {
+      "small_biz_owner": {"expense_multiplier": 1.15, "tax_rate": 0.28},
+      "salaried_mid": {"expense_multiplier": 1.08},
+      "salaried_high": {"expense_multiplier": 1.08},
+      "young_professional": {"expense_multiplier": 1.08}
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.05
+    },
+    "reasoning": "Higher GST increases costs for businesses (passed to consumers) and pushes inflation up. Small businesses bear the brunt as both taxpayers and consumers.",
+    "keywords": ["gst", "tax", "goods", "services", "increase", "hike", "rate", "indirect"],
+    "key_terms": ["gst hike", "gst increase", "goods and services tax"]
+  },
+  {
+    "policy_name": "Farm Loan Waiver",
+    "policy_description": "Complete waiver of all outstanding farm loans up to ₹2,00,000",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"debt_interest_rate": 0.0}
+    },
+    "global_effects": {
+      "credit_availability": 0.6
+    },
+    "reasoning": "Farm loan waivers eliminate farmer debt burden but reduce credit availability as banks become cautious about future lending to agriculture sector.",
+    "keywords": ["farm", "loan", "waiver", "farmer", "agriculture", "debt", "forgive", "cancel", "write", "off"],
+    "key_terms": ["farm loan waiver", "loan waiver", "debt waiver", "farmer loan"]
+  },
+  {
+    "policy_name": "Free Healthcare for All",
+    "policy_description": "Government-funded healthcare covering 100% of medical expenses",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"healthcare_subsidy": 1.0},
+      "gig_worker": {"healthcare_subsidy": 1.0},
+      "student": {"healthcare_subsidy": 1.0},
+      "small_biz_owner": {"healthcare_subsidy": 1.0},
+      "salaried_mid": {"healthcare_subsidy": 1.0},
+      "salaried_high": {"healthcare_subsidy": 0.8},
+      "young_professional": {"healthcare_subsidy": 1.0},
+      "govt_employee": {"healthcare_subsidy": 1.0},
+      "senior": {"healthcare_subsidy": 1.0},
+      "unemployed": {"healthcare_subsidy": 1.0}
+    },
+    "global_effects": {
+      "healthcare_cost_index": 0.5
+    },
+    "reasoning": "Universal healthcare eliminates medical expense burden for all citizens. Seniors benefit most as healthcare is their primary expense. High earners get partial coverage.",
+    "keywords": ["free", "healthcare", "medical", "health", "hospital", "universal", "insurance", "ayushman"],
+    "key_terms": ["free healthcare", "universal healthcare", "ayushman bharat"]
+  },
+  {
+    "policy_name": "Minimum Wage Increase",
+    "policy_description": "Increase minimum wage by 30%, affecting low-income workers",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"income_multiplier": 1.3},
+      "gig_worker": {"income_multiplier": 1.3},
+      "unemployed": {"income_multiplier": 1.3}
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.04,
+      "employment_availability": 0.65
+    },
+    "reasoning": "Higher minimum wages boost income for low earners but may reduce employment availability as businesses cut costs. Slight inflationary pressure.",
+    "keywords": ["minimum", "wage", "salary", "increase", "raise", "workers", "pay", "floor"],
+    "key_terms": ["minimum wage", "wage increase", "wage hike"]
+  },
+  {
+    "policy_name": "Free Education for Students",
+    "policy_description": "100% tuition waiver for all students in public institutions",
+    "duration_steps": -1,
+    "affected_agents": {
+      "student": {"education_subsidy": 1.0, "expense_multiplier": 0.7}
+    },
+    "global_effects": {
+      "education_cost_index": 0.3
+    },
+    "reasoning": "Free education removes tuition burden from students, allowing them to focus on learning rather than financial survival.",
+    "keywords": ["free", "education", "tuition", "school", "college", "university", "student", "scholarship"],
+    "key_terms": ["free education", "tuition waiver", "free college"]
+  },
+  {
+    "policy_name": "Wealth Tax on Rich",
+    "policy_description": "2% annual wealth tax on individuals with wealth above ₹5,00,000",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_high": {"tax_rate": 0.35},
+      "small_biz_owner": {"tax_rate": 0.22}
+    },
+    "global_effects": {},
+    "reasoning": "Wealth tax targets high-net-worth individuals to reduce inequality. Salaried high earners and successful business owners face higher tax burden.",
+    "keywords": ["wealth", "tax", "rich", "wealthy", "progressive", "high", "income", "surcharge"],
+    "key_terms": ["wealth tax", "tax on rich", "progressive tax"]
+  },
+  {
+    "policy_name": "Employment Guarantee Scheme",
+    "policy_description": "Government guarantees 100 days of employment per year for rural workers",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"welfare_payment": 3000},
+      "unemployed": {"welfare_payment": 6000, "income_multiplier": 1.0}
+    },
+    "global_effects": {
+      "employment_availability": 0.85
+    },
+    "reasoning": "Similar to MGNREGA, this scheme provides guaranteed employment and income support for farmers and unemployed workers.",
+    "keywords": ["employment", "guarantee", "scheme", "mgnrega", "nrega", "rural", "jobs", "work", "100", "days"],
+    "key_terms": ["employment guarantee", "mgnrega", "nrega", "job guarantee"]
+  },
+  {
+    "policy_name": "Corporate Tax Cut",
+    "policy_description": "Reduce corporate tax rate by 10% to stimulate business growth",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_high": {"tax_rate": 0.22},
+      "small_biz_owner": {"tax_rate": 0.12, "income_multiplier": 1.1}
+    },
+    "global_effects": {
+      "employment_availability": 0.82,
+      "market_return_multiplier": 0.07
+    },
+    "reasoning": "Lower corporate taxes boost business profits and investment, potentially creating more jobs but reducing government revenue.",
+    "keywords": ["corporate", "tax", "cut", "reduce", "business", "company", "lower"],
+    "key_terms": ["corporate tax cut", "tax reduction", "business tax"]
+  },
+  {
+    "policy_name": "Interest Rate Hike",
+    "policy_description": "RBI increases repo rate by 2%, raising borrowing costs",
+    "duration_steps": 180,
+    "affected_agents": {
+      "farmer": {"debt_interest_rate": 0.12},
+      "small_biz_owner": {"debt_interest_rate": 0.12},
+      "salaried_mid": {"debt_interest_rate": 0.10},
+      "young_professional": {"debt_interest_rate": 0.10}
+    },
+    "global_effects": {
+      "credit_availability": 0.55,
+      "global_inflation_rate": 0.02
+    },
+    "reasoning": "Higher interest rates increase borrowing costs, particularly for farmers and small businesses with existing loans. Reduces inflation but tightens credit.",
+    "keywords": ["interest", "rate", "hike", "increase", "rbi", "repo", "borrowing", "monetary"],
+    "key_terms": ["interest rate hike", "repo rate", "rbi rate"]
+  },
+  {
+    "policy_name": "Food Subsidy Program",
+    "policy_description": "Subsidized food grains for families below poverty line at ₹2/kg",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.85},
+      "gig_worker": {"expense_multiplier": 0.85},
+      "unemployed": {"expense_multiplier": 0.75},
+      "senior": {"expense_multiplier": 0.85}
+    },
+    "global_effects": {},
+    "reasoning": "Food subsidies reduce the expense burden on poor households, helping them allocate more resources to other needs.",
+    "keywords": ["food", "subsidy", "ration", "grain", "rice", "wheat", "cheap", "pds", "below", "poverty"],
+    "key_terms": ["food subsidy", "ration card", "pds", "food grains"]
+  },
+  {
+    "policy_name": "Housing Subsidy (PMAY)",
+    "policy_description": "Interest subsidy on home loans for economically weaker sections",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.9},
+      "gig_worker": {"expense_multiplier": 0.9},
+      "salaried_mid": {"expense_multiplier": 0.92}
+    },
+    "global_effects": {
+      "housing_cost_index": 0.8
+    },
+    "reasoning": "Housing subsidy reduces accommodation costs for lower and middle income groups, improving their financial stability.",
+    "keywords": ["housing", "subsidy", "pmay", "home", "loan", "affordable", "house", "rent", "accommodation"],
+    "key_terms": ["housing subsidy", "pmay", "pradhan mantri awas"]
+  },
+  {
+    "policy_name": "Digital India Push",
+    "policy_description": "Free laptops and internet for students, digital training for workers",
+    "duration_steps": 365,
+    "affected_agents": {
+      "student": {"education_subsidy": 0.3, "expense_multiplier": 0.85},
+      "young_professional": {"income_multiplier": 1.05},
+      "gig_worker": {"income_multiplier": 1.08}
+    },
+    "global_effects": {
+      "employment_availability": 0.80
+    },
+    "reasoning": "Digital access improves student learning outcomes and enables gig workers to access more platform opportunities.",
+    "keywords": ["digital", "laptop", "computer", "internet", "technology", "tech", "online", "digital india"],
+    "key_terms": ["digital india", "free laptop", "digital training"]
+  },
+  {
+    "policy_name": "Pension Reform — Old Pension Scheme",
+    "policy_description": "Restore Old Pension Scheme for government employees with guaranteed pension",
+    "duration_steps": -1,
+    "affected_agents": {
+      "govt_employee": {"savings_interest_rate": 0.06, "income_multiplier": 1.05},
+      "senior": {"income_multiplier": 1.15, "welfare_payment": 3000}
+    },
+    "global_effects": {},
+    "reasoning": "Restoring OPS provides guaranteed retirement income for government employees and increases pension for current retirees.",
+    "keywords": ["pension", "ops", "old", "scheme", "retirement", "government", "employee", "senior"],
+    "key_terms": ["old pension scheme", "ops", "pension reform"]
+  },
+  {
+    "policy_name": "Agricultural Subsidy",
+    "policy_description": "Input subsidy for seeds, fertilizer, and equipment for farmers",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.7, "income_multiplier": 1.15}
+    },
+    "global_effects": {},
+    "reasoning": "Agricultural input subsidies reduce farming costs and boost productivity, directly benefiting farmer income.",
+    "keywords": ["agriculture", "farm", "subsidy", "seed", "fertilizer", "crop", "kisan", "farmer", "input"],
+    "key_terms": ["agricultural subsidy", "farm subsidy", "kisan", "farmer subsidy"]
+  },
+  {
+    "policy_name": "Startup India Tax Holiday",
+    "policy_description": "3-year tax holiday for new startups and small businesses",
+    "duration_steps": 365,
+    "affected_agents": {
+      "young_professional": {"tax_rate": 0.05},
+      "small_biz_owner": {"tax_rate": 0.05, "income_multiplier": 1.1}
+    },
+    "global_effects": {
+      "employment_availability": 0.80
+    },
+    "reasoning": "Tax holidays encourage entrepreneurship and business creation, potentially creating new jobs.",
+    "keywords": ["startup", "tax", "holiday", "exemption", "entrepreneur", "business", "new"],
+    "key_terms": ["startup india", "tax holiday", "startup tax"]
+  },
+  {
+    "policy_name": "Import Duty Increase",
+    "policy_description": "Increase import duties by 25% to protect domestic industry",
+    "duration_steps": -1,
+    "affected_agents": {
+      "small_biz_owner": {"income_multiplier": 1.12},
+      "farmer": {"income_multiplier": 1.08}
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.045
+    },
+    "reasoning": "Higher import duties protect domestic manufacturers and farmers but increase prices for consumers through inflation.",
+    "keywords": ["import", "duty", "tariff", "customs", "protect", "domestic", "make in india"],
+    "key_terms": ["import duty", "tariff", "customs duty", "make in india"]
+  },
+  {
+    "policy_name": "Senior Citizen Healthcare Scheme",
+    "policy_description": "Free healthcare and medicine for all citizens above 60 years",
+    "duration_steps": -1,
+    "affected_agents": {
+      "senior": {"healthcare_subsidy": 1.0, "expense_multiplier": 0.75}
+    },
+    "global_effects": {},
+    "reasoning": "Targeted healthcare for seniors addresses their primary financial burden and improves quality of life.",
+    "keywords": ["senior", "elderly", "old", "age", "healthcare", "medical", "medicine", "free", "60"],
+    "key_terms": ["senior healthcare", "elderly care", "senior citizen"]
+  },
+  {
+    "policy_name": "Inflation Control Measures",
+    "policy_description": "Government intervenes to control inflation through monetary and fiscal measures",
+    "duration_steps": 180,
+    "affected_agents": {},
+    "global_effects": {
+      "global_inflation_rate": 0.02,
+      "credit_availability": 0.6
+    },
+    "reasoning": "Inflation control measures reduce price pressures but tighten credit availability as part of the monetary response.",
+    "keywords": ["inflation", "control", "price", "reduce", "stabilize", "monetary", "fiscal"],
+    "key_terms": ["inflation control", "price control", "price stability"]
+  },
+  {
+    "policy_name": "Student Loan Subsidy",
+    "policy_description": "Government subsidizes interest on education loans for economically weaker students",
+    "duration_steps": -1,
+    "affected_agents": {
+      "student": {"debt_interest_rate": 0.02, "education_subsidy": 0.5}
+    },
+    "global_effects": {},
+    "reasoning": "Subsidized student loans reduce the financial burden of education, making higher education more accessible.",
+    "keywords": ["student", "loan", "education", "interest", "subsidy", "college", "tuition"],
+    "key_terms": ["student loan", "education loan", "student subsidy"]
+  },
+  {
+    "policy_name": "Microfinance Support",
+    "policy_description": "Government-backed microfinance at 4% interest for small entrepreneurs",
+    "duration_steps": -1,
+    "affected_agents": {
+      "small_biz_owner": {"debt_interest_rate": 0.04, "income_multiplier": 1.05},
+      "gig_worker": {"debt_interest_rate": 0.04},
+      "farmer": {"debt_interest_rate": 0.04}
+    },
+    "global_effects": {
+      "credit_availability": 0.85
+    },
+    "reasoning": "Cheap microfinance loans help small businesses and farmers access capital for growth without crushing debt burden.",
+    "keywords": ["microfinance", "micro", "finance", "small", "loan", "credit", "mudra", "entrepreneur"],
+    "key_terms": ["microfinance", "mudra loan", "micro credit"]
+  },
+  {
+    "policy_name": "Defense Budget Increase",
+    "policy_description": "15% increase in defense spending, funded by cuts to welfare programs",
+    "duration_steps": -1,
+    "affected_agents": {
+      "govt_employee": {"income_multiplier": 1.08},
+      "unemployed": {"welfare_payment": 0}
+    },
+    "global_effects": {
+      "employment_availability": 0.72
+    },
+    "reasoning": "Defense spending increases benefit government/military employees but welfare cuts hurt the unemployed and vulnerable.",
+    "keywords": ["defense", "defence", "military", "army", "budget", "spending", "security"],
+    "key_terms": ["defense budget", "military spending", "defence spending"]
+  },
+  {
+    "policy_name": "Swachh Bharat Cess",
+    "policy_description": "Additional 0.5% cess on all services to fund sanitation programs",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_mid": {"expense_multiplier": 1.02},
+      "salaried_high": {"expense_multiplier": 1.02},
+      "small_biz_owner": {"expense_multiplier": 1.03}
+    },
+    "global_effects": {},
+    "reasoning": "Small additional cess on services marginally increases expenses for middle and upper income groups.",
+    "keywords": ["swachh", "bharat", "cess", "sanitation", "clean", "hygiene", "toilet"],
+    "key_terms": ["swachh bharat", "sanitation cess", "clean india"]
+  },
+  {
+    "policy_name": "Crop Insurance Scheme",
+    "policy_description": "Government-subsidized crop insurance covering 80% of crop failure losses",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.92, "income_multiplier": 1.05}
+    },
+    "global_effects": {},
+    "reasoning": "Crop insurance protects farmers from catastrophic losses during monsoon failures, reducing financial risk.",
+    "keywords": ["crop", "insurance", "farmer", "agriculture", "fasal", "bima", "monsoon", "weather"],
+    "key_terms": ["crop insurance", "fasal bima", "crop failure insurance"]
+  },
+  {
+    "policy_name": "Electric Vehicle Subsidy",
+    "policy_description": "₹1.5 lakh subsidy on electric vehicles to reduce pollution",
+    "duration_steps": 365,
+    "affected_agents": {
+      "salaried_mid": {"expense_multiplier": 0.95},
+      "salaried_high": {"expense_multiplier": 0.93},
+      "young_professional": {"expense_multiplier": 0.95}
+    },
+    "global_effects": {},
+    "reasoning": "EV subsidies reduce transport costs for salaried workers who can afford the initial purchase.",
+    "keywords": ["electric", "vehicle", "ev", "subsidy", "car", "pollution", "green", "transport"],
+    "key_terms": ["electric vehicle", "ev subsidy", "electric car"]
+  },
+  {
+    "policy_name": "PM Kisan Samman Nidhi",
+    "policy_description": "₹6,000 annual direct benefit transfer to all farmer families",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"welfare_payment": 2000}
+    },
+    "global_effects": {},
+    "reasoning": "Direct cash transfer to farmers provides a basic income supplement, similar to the actual PM-KISAN scheme.",
+    "keywords": ["kisan", "samman", "nidhi", "pm", "farmer", "direct", "benefit", "transfer", "dbt", "6000"],
+    "key_terms": ["pm kisan", "kisan samman", "farmer dbt"]
+  },
+  {
+    "policy_name": "Income Tax Cut for Middle Class",
+    "policy_description": "Reduce income tax by 5% for the ₹5-15 lakh income bracket",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_mid": {"tax_rate": 0.15},
+      "young_professional": {"tax_rate": 0.15},
+      "govt_employee": {"tax_rate": 0.15}
+    },
+    "global_effects": {},
+    "reasoning": "Tax cuts for the middle class increase disposable income, potentially boosting consumption and savings.",
+    "keywords": ["income", "tax", "cut", "middle", "class", "reduce", "slab", "bracket"],
+    "key_terms": ["income tax cut", "tax reduction middle class", "tax slab"]
+  },
+  {
+    "policy_name": "Export Promotion Scheme",
+    "policy_description": "Tax rebates and subsidies for export-oriented businesses",
+    "duration_steps": 365,
+    "affected_agents": {
+      "small_biz_owner": {"income_multiplier": 1.15, "tax_rate": 0.10}
+    },
+    "global_effects": {
+      "employment_availability": 0.80
+    },
+    "reasoning": "Export incentives boost business revenue and create jobs in export-oriented sectors.",
+    "keywords": ["export", "promotion", "trade", "foreign", "international", "rebate"],
+    "key_terms": ["export promotion", "export subsidy", "trade promotion"]
+  },
+  {
+    "policy_name": "Prohibition / Liquor Ban",
+    "policy_description": "Complete ban on sale of alcohol in the state",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.90},
+      "gig_worker": {"expense_multiplier": 0.90},
+      "small_biz_owner": {"income_multiplier": 0.85}
+    },
+    "global_effects": {
+      "employment_availability": 0.70
+    },
+    "reasoning": "Prohibition reduces household expenditure on alcohol but kills the liquor industry, reducing employment and business revenue.",
+    "keywords": ["prohibition", "liquor", "ban", "alcohol", "dry", "state", "drinking"],
+    "key_terms": ["prohibition", "liquor ban", "alcohol ban"]
+  },
+  {
+    "policy_name": "Land Reform Act",
+    "policy_description": "Redistribute excess land to landless farmers with ownership titles",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"income_multiplier": 1.25, "expense_multiplier": 0.85}
+    },
+    "global_effects": {},
+    "reasoning": "Land redistribution gives farmers more productive capacity and reduces rental expenses.",
+    "keywords": ["land", "reform", "redistribute", "farmer", "title", "ownership", "ceiling"],
+    "key_terms": ["land reform", "land redistribution", "land ceiling"]
+  },
+  {
+    "policy_name": "Smart City Infrastructure",
+    "policy_description": "Major infrastructure investment improving urban services and connectivity",
+    "duration_steps": 365,
+    "affected_agents": {
+      "salaried_mid": {"expense_multiplier": 0.95},
+      "salaried_high": {"expense_multiplier": 0.93},
+      "young_professional": {"expense_multiplier": 0.95}
+    },
+    "global_effects": {
+      "housing_cost_index": 1.15,
+      "employment_availability": 0.82
+    },
+    "reasoning": "Smart city investment improves urban infrastructure but temporarily raises housing costs due to gentrification.",
+    "keywords": ["smart", "city", "infrastructure", "urban", "development", "metro", "road"],
+    "key_terms": ["smart city", "infrastructure", "urban development"]
+  },
+  {
+    "policy_name": "Maternity Benefit Enhancement",
+    "policy_description": "Extended maternity leave to 26 weeks with full pay for all women workers",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_mid": {"income_multiplier": 1.02},
+      "young_professional": {"income_multiplier": 1.02}
+    },
+    "global_effects": {
+      "employment_availability": 0.73
+    },
+    "reasoning": "Better maternity benefits improve worker welfare but may slightly reduce hiring as employers bear higher costs.",
+    "keywords": ["maternity", "benefit", "leave", "women", "mother", "child", "pregnancy"],
+    "key_terms": ["maternity benefit", "maternity leave", "women welfare"]
+  },
+  {
+    "policy_name": "Skill India Mission",
+    "policy_description": "Free vocational training and certification for youth and unemployed",
+    "duration_steps": 365,
+    "affected_agents": {
+      "unemployed": {"income_multiplier": 1.0, "welfare_payment": 2000},
+      "gig_worker": {"income_multiplier": 1.1},
+      "student": {"income_multiplier": 1.05}
+    },
+    "global_effects": {
+      "employment_availability": 0.80
+    },
+    "reasoning": "Skill development programs improve employability of youth and unemployed workers.",
+    "keywords": ["skill", "india", "training", "vocational", "certification", "youth", "employment"],
+    "key_terms": ["skill india", "vocational training", "skill development"]
+  },
+  {
+    "policy_name": "Real Estate Regulation (RERA)",
+    "policy_description": "Strict regulation of real estate sector to protect buyers",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_mid": {"expense_multiplier": 0.95},
+      "young_professional": {"expense_multiplier": 0.95}
+    },
+    "global_effects": {
+      "housing_cost_index": 0.85
+    },
+    "reasoning": "Real estate regulation reduces property fraud and inflated prices, making housing more affordable.",
+    "keywords": ["real", "estate", "regulation", "rera", "property", "housing", "builder", "buyer"],
+    "key_terms": ["rera", "real estate regulation", "property regulation"]
+  },
+  {
+    "policy_name": "Jan Dhan Financial Inclusion",
+    "policy_description": "Zero-balance bank accounts with insurance for all unbanked citizens",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"savings_interest_rate": 0.04},
+      "gig_worker": {"savings_interest_rate": 0.04},
+      "unemployed": {"savings_interest_rate": 0.04}
+    },
+    "global_effects": {
+      "credit_availability": 0.80
+    },
+    "reasoning": "Financial inclusion allows the unbanked to save, access credit, and receive government transfers digitally.",
+    "keywords": ["jan", "dhan", "bank", "account", "financial", "inclusion", "unbanked", "savings"],
+    "key_terms": ["jan dhan", "financial inclusion", "bank account"]
+  },
+  {
+    "policy_name": "Austerity Measures",
+    "policy_description": "Government spending cuts across all departments to reduce fiscal deficit",
+    "duration_steps": 365,
+    "affected_agents": {
+      "govt_employee": {"income_multiplier": 0.92},
+      "unemployed": {"welfare_payment": 0}
+    },
+    "global_effects": {
+      "employment_availability": 0.65,
+      "global_inflation_rate": 0.02
+    },
+    "reasoning": "Austerity reduces government spending, cutting welfare and government salaries but controlling inflation.",
+    "keywords": ["austerity", "spending", "cut", "fiscal", "deficit", "budget", "reduce", "government"],
+    "key_terms": ["austerity", "spending cuts", "fiscal austerity"]
+  },
+  {
+    "policy_name": "Price Controls on Essential Goods",
+    "policy_description": "Maximum retail price caps on essential commodities",
+    "duration_steps": 180,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.88},
+      "gig_worker": {"expense_multiplier": 0.88},
+      "student": {"expense_multiplier": 0.88},
+      "unemployed": {"expense_multiplier": 0.85}
+    },
+    "global_effects": {
+      "global_inflation_rate": 0.01
+    },
+    "reasoning": "Price controls reduce costs for consumers but may discourage production if prices are set below market rates.",
+    "keywords": ["price", "control", "cap", "essential", "goods", "commodity", "maximum", "retail"],
+    "key_terms": ["price control", "price cap", "essential commodity"]
+  },
+  {
+    "policy_name": "Foreign Direct Investment (FDI) Liberalization",
+    "policy_description": "Open key sectors to 100% FDI to attract foreign capital",
+    "duration_steps": -1,
+    "affected_agents": {
+      "salaried_high": {"income_multiplier": 1.1},
+      "young_professional": {"income_multiplier": 1.08}
+    },
+    "global_effects": {
+      "employment_availability": 0.82,
+      "market_return_multiplier": 0.07
+    },
+    "reasoning": "FDI liberalization brings foreign capital and technology, creating high-skill jobs and boosting market returns.",
+    "keywords": ["fdi", "foreign", "investment", "direct", "liberalize", "open", "sector", "capital"],
+    "key_terms": ["fdi", "foreign investment", "fdi liberalization"]
+  },
+  {
+    "policy_name": "Anti-Poverty Campaign",
+    "policy_description": "Comprehensive multi-program initiative targeting extreme poverty",
+    "duration_steps": 365,
+    "affected_agents": {
+      "farmer": {"welfare_payment": 3000, "expense_multiplier": 0.85},
+      "gig_worker": {"welfare_payment": 2000},
+      "unemployed": {"welfare_payment": 5000},
+      "senior": {"welfare_payment": 2000}
+    },
+    "global_effects": {},
+    "reasoning": "Multi-pronged poverty reduction through welfare payments and expense subsidies for the most vulnerable groups.",
+    "keywords": ["poverty", "anti", "poor", "welfare", "support", "below", "line", "bpl"],
+    "key_terms": ["anti-poverty", "poverty reduction", "bpl"]
+  },
+  {
+    "policy_name": "Cryptocurrency Ban",
+    "policy_description": "Complete ban on cryptocurrency trading and mining",
+    "duration_steps": -1,
+    "affected_agents": {
+      "young_professional": {"investment_return_rate": 0.03},
+      "salaried_high": {"investment_return_rate": 0.04}
+    },
+    "global_effects": {
+      "market_return_multiplier": 0.04
+    },
+    "reasoning": "Crypto ban removes a high-risk/high-reward investment avenue, reducing market returns for tech-savvy investors.",
+    "keywords": ["crypto", "cryptocurrency", "bitcoin", "ban", "digital", "currency", "mining"],
+    "key_terms": ["cryptocurrency ban", "crypto ban", "bitcoin ban"]
+  },
+  {
+    "policy_name": "Rural Electrification",
+    "policy_description": "100% electrification of all rural households with subsidized rates",
+    "duration_steps": 365,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.92, "income_multiplier": 1.05}
+    },
+    "global_effects": {
+      "employment_availability": 0.78
+    },
+    "reasoning": "Electrification reduces energy costs for farmers and enables productive use of evening hours.",
+    "keywords": ["rural", "electrification", "electricity", "power", "energy", "solar", "village"],
+    "key_terms": ["rural electrification", "village electricity", "power for all"]
+  },
+  {
+    "policy_name": "Right to Food Act",
+    "policy_description": "Legal guarantee of food security for all citizens below poverty line",
+    "duration_steps": -1,
+    "affected_agents": {
+      "farmer": {"expense_multiplier": 0.85},
+      "gig_worker": {"expense_multiplier": 0.85},
+      "unemployed": {"expense_multiplier": 0.70},
+      "senior": {"expense_multiplier": 0.85}
+    },
+    "global_effects": {},
+    "reasoning": "Food security guarantee ensures minimum nutrition for all vulnerable groups, reducing survival expenses.",
+    "keywords": ["food", "security", "right", "act", "hunger", "nutrition", "meal", "midday"],
+    "key_terms": ["right to food", "food security", "food act"]
+  },
+  {
+    "policy_name": "Disinvestment of PSUs",
+    "policy_description": "Government sells stakes in public sector units to raise revenue",
+    "duration_steps": -1,
+    "affected_agents": {
+      "govt_employee": {"income_multiplier": 0.95}
+    },
+    "global_effects": {
+      "market_return_multiplier": 0.06,
+      "employment_availability": 0.72
+    },
+    "reasoning": "PSU disinvestment may reduce job security for government employees but brings efficiency and market returns.",
+    "keywords": ["disinvestment", "psu", "public", "sector", "privatize", "sell", "stake", "government"],
+    "key_terms": ["disinvestment", "psu", "privatization"]
+  },
+  {
+    "policy_name": "Women Empowerment Fund",
+    "policy_description": "Special fund providing ₹10,000 startup capital for women entrepreneurs",
+    "duration_steps": 365,
+    "affected_agents": {
+      "small_biz_owner": {"income_multiplier": 1.08},
+      "gig_worker": {"income_multiplier": 1.05}
+    },
+    "global_effects": {
+      "employment_availability": 0.78
+    },
+    "reasoning": "Women's entrepreneurship support creates new businesses and improves household income.",
+    "keywords": ["women", "empowerment", "fund", "entrepreneur", "female", "girl", "mahila"],
+    "key_terms": ["women empowerment", "mahila", "women entrepreneur"]
+  },
+  {
+    "policy_name": "Water Conservation Program",
+    "policy_description": "Government-funded irrigation and water conservation for agriculture",
+    "duration_steps": 365,
+    "affected_agents": {
+      "farmer": {"income_multiplier": 1.1, "expense_multiplier": 0.9}
+    },
+    "global_effects": {},
+    "reasoning": "Better irrigation reduces crop failure risk and increases agricultural productivity.",
+    "keywords": ["water", "conservation", "irrigation", "rain", "harvest", "drought", "dam"],
+    "key_terms": ["water conservation", "irrigation", "water harvest"]
+  },
+  {
+    "policy_name": "IT Sector Tax Exemption",
+    "policy_description": "Tax holiday for IT and software companies for 5 years",
+    "duration_steps": 365,
+    "affected_agents": {
+      "salaried_high": {"tax_rate": 0.20},
+      "young_professional": {"tax_rate": 0.10, "income_multiplier": 1.1}
+    },
+    "global_effects": {
+      "employment_availability": 0.82
+    },
+    "reasoning": "IT sector exemptions attract investment, create tech jobs, and boost incomes for young professionals.",
+    "keywords": ["it", "software", "technology", "tech", "exemption", "tax", "sector", "digital"],
+    "key_terms": ["it sector", "software tax", "tech exemption"]
+  }
+]

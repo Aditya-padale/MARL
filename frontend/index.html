@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARL City Simulator | Policy Engine</title>
+    
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+
+    <div class="app-container">
+        <!-- TOP NAVIGATION BAR -->
+        <header class="top-bar glass-panel">
+            <div class="logo-area">
+                <i class="fas fa-city logo-icon"></i>
+                <div class="logo-text">
+                    <h1>MARL City Simulator</h1>
+                    <span class="subtitle">AI Policy Analysis Engine</span>
+                </div>
+            </div>
+            
+            <div class="time-controls">
+                <div class="time-display" id="time-display">Year 1, Jan Week 1</div>
+                <div class="phase-display" id="phase-display"><i class="fas fa-sun"></i> Day</div>
+                
+                <div class="control-group glass-button-group">
+                    <button class="control-btn" id="btn-pause" title="Pause"><i class="fas fa-pause"></i></button>
+                    <button class="control-btn active" id="btn-play" title="Play (1x)"><i class="fas fa-play"></i></button>
+                    <button class="control-btn" id="btn-fast" title="Fast Forward (1 Wk/s)"><i class="fas fa-forward"></i></button>
+                    <button class="control-btn" id="btn-very-fast" title="Max Speed (1 Mo/s)"><i class="fas fa-fast-forward"></i></button>
+                </div>
+                
+                <div class="control-group glass-button-group">
+                    <button class="control-btn action-btn" id="btn-skip-month" title="Skip Month"><i class="fas fa-step-forward"></i> +1 Mo</button>
+                    <button class="control-btn action-btn" id="btn-skip-year" title="Skip Year"><i class="fas fa-fast-forward"></i> +1 Yr</button>
+                </div>
+            </div>
+
+            <div class="connection-status">
+                <div class="status-indicator" id="connection-indicator"></div>
+                <span id="connection-text">Connecting...</span>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            
+            <!-- LEFT AREA: CANVAS -->
+            <div class="canvas-container glass-panel">
+                <canvas id="city-canvas" width="1200" height="900"></canvas>
+                
+                <!-- Sky overlay for day/night cycle -->
+                <div id="sky-overlay" class="sky-overlay"></div>
+                
+                <!-- Floating Event Feed -->
+                <div class="event-feed glass-panel-light" id="event-feed">
+                    <div class="feed-header">City Events</div>
+                    <div class="feed-content" id="feed-content">
+                        <!-- Events populated by JS -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RIGHT AREA: SIDEBAR PANELS -->
+            <div class="sidebar glass-panel">
+                
+                <!-- TAB NAVIGATION -->
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-target="dashboard"><i class="fas fa-chart-line"></i> Dashboard</button>
+                    <button class="tab-btn" data-target="policy"><i class="fas fa-scroll"></i> Policy Engine</button>
+                    <button class="tab-btn" data-target="inspector"><i class="fas fa-search"></i> Inspector</button>
+                    <button class="tab-btn" data-target="comparison"><i class="fas fa-balance-scale"></i> Compare</button>
+                    <button class="tab-btn" data-target="network"><i class="fas fa-project-diagram"></i> Network</button>
+                </div>
+                
+                <!-- PANEL: DASHBOARD -->
+                <div class="tab-content active" id="panel-dashboard">
+                    <h2 class="panel-title">Economic Dashboard</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-label">Gini Coefficient</span>
+                            <span class="metric-value" id="val-gini">0.00</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Poverty Rate</span>
+                            <span class="metric-value" id="val-poverty">0.0%</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Median Wealth</span>
+                            <span class="metric-value" id="val-median">₹0</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Bankruptcies</span>
+                            <span class="metric-value" id="val-bankrupt">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Wealth Inequality Trend</h3>
+                        <canvas id="chart-inequality"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Macroeconomic Indicators</h3>
+                        <canvas id="chart-macro"></canvas>
+                    </div>
+
+                    <div class="social-summary mt-4">
+                        <h3>Social Mobility (Last 30 Days)</h3>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar upward" id="bar-upward" style="width: 0%">0% Up</div>
+                            <div class="progress-bar stagnant" id="bar-stagnant" style="width: 100%">100% Stagnant</div>
+                            <div class="progress-bar downward" id="bar-downward" style="width: 0%">0% Down</div>
+                        </div>
+                    </div>
+
+                    <div class="social-analytics mt-4">
+                        <h3>Social Analytics</h3>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <span class="metric-label">Network Density</span>
+                                <span class="metric-value" id="val-density">0.00</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-label">Avg Trust</span>
+                                <span class="metric-value" id="val-trust">0.00</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-label">Active Loans</span>
+                                <span class="metric-value" id="val-active-loans">0</span>
+                            </div>
+                            <div class="metric-card">
+                                <span class="metric-label">Avg Reputation</span>
+                                <span class="metric-value" id="val-reputation">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PANEL: NETWORK GRAPH -->
+                <div class="tab-content" id="panel-network">
+                    <h2 class="panel-title">Social Graph Visualizer</h2>
+                    <p class="panel-desc">Force-directed layout of agent relationships, trust, and family ties.</p>
+                    <div id="network-graph-container" style="width: 100%; height: 600px; background: rgba(0,0,0,0.2); border-radius: 8px; margin-top: 15px; overflow: hidden; position: relative;">
+                    </div>
+                </div>
+
+                <!-- PANEL: POLICY ENGINE -->
+                <div class="tab-content" id="panel-policy">
+                    <h2 class="panel-title"><i class="fas fa-robot text-gradient"></i> Gemini Policy Engine</h2>
+                    <p class="panel-desc">Type a policy in plain English. Gemini 2.5 Flash will parse it into simulation parameters.</p>
+                    
+                    <div class="policy-input-area">
+                        <textarea id="policy-input" placeholder="Example: Give a monthly universal basic income of ₹5000 to all unemployed citizens and farmers..."></textarea>
+                        <button id="btn-apply-policy" class="btn-primary"><i class="fas fa-magic"></i> Evaluate & Apply</button>
+                    </div>
+                    
+                    <div class="policy-result hidden" id="policy-result-area">
+                        <div class="result-header">
+                            <h3 id="result-policy-name">Policy Name</h3>
+                            <span class="badge" id="result-source">Gemini</span>
+                        </div>
+                        <p class="result-reasoning" id="result-reasoning">Reasoning goes here...</p>
+                        
+                        <div class="result-details">
+                            <h4>Global Effects</h4>
+                            <ul id="result-global" class="effect-list"></ul>
+                            
+                            <h4>Agent Effects</h4>
+                            <ul id="result-agents" class="effect-list"></ul>
+                        </div>
+                    </div>
+
+                    <div class="active-policies mt-4">
+                        <h3>Active Policies</h3>
+                        <div id="active-policies-list" class="policy-list">
+                            <div class="empty-state">No active policies</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PANEL: INSPECTOR -->
+                <div class="tab-content" id="panel-inspector">
+                    <h2 class="panel-title">Agent Inspector</h2>
+                    
+                    <div class="inspector-empty" id="inspector-empty">
+                        <i class="fas fa-hand-pointer"></i>
+                        <p>Click on any agent in the city to inspect their neural network state and finances.</p>
+                    </div>
+                    
+                    <div class="inspector-data hidden" id="inspector-data">
+                        <div class="agent-header">
+                            <div class="agent-avatar" id="insp-avatar"></div>
+                            <div class="agent-title">
+                                <h3 id="insp-name">Agent #000</h3>
+                                <span class="badge" id="insp-type">Type</span>
+                            </div>
+                        </div>
+                        
+                        <div class="finance-grid">
+                            <div class="fin-stat"><span class="fin-label">Wealth</span><span class="fin-val text-green" id="insp-wealth">₹0</span></div>
+                            <div class="fin-stat"><span class="fin-label">Income</span><span class="fin-val" id="insp-income">₹0/mo</span></div>
+                            <div class="fin-stat"><span class="fin-label">Debt</span><span class="fin-val text-red" id="insp-debt">₹0</span></div>
+                            <div class="fin-stat"><span class="fin-label">Tier</span><span class="fin-val" id="insp-tier">Middle</span></div>
+                        </div>
+                        
+                        <div class="chart-container mini-chart">
+                            <h3>PPO Action Probabilities</h3>
+                            <canvas id="chart-actions"></canvas>
+                        </div>
+                        
+                        <div class="agent-details">
+                            <h3>Key State Features (Top 3)</h3>
+                            <ul class="feature-list" id="insp-features"></ul>
+                        </div>
+                        
+                        <div class="agent-details mt-2">
+                            <h3>Social Profile</h3>
+                            <div class="finance-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 5px; gap: 5px;">
+                                <div class="fin-stat" style="padding: 5px;"><span class="fin-label">Reputation</span><span class="fin-val" id="insp-reputation">0.0</span></div>
+                                <div class="fin-stat" style="padding: 5px;"><span class="fin-label">Skill</span><span class="fin-val" id="insp-skill">0.0</span></div>
+                            </div>
+                            <h4>Memory</h4>
+                            <ul class="timeline" id="insp-memory" style="max-height: 150px; overflow-y: auto;"></ul>
+                        </div>
+                        
+                        <div class="agent-details mt-2">
+                            <h3>Recent Life Events</h3>
+                            <ul class="timeline" id="insp-timeline"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- PANEL: COMPARISON -->
+                <div class="tab-content" id="panel-comparison">
+                    <h2 class="panel-title">A/B Scenario Comparison</h2>
+                    <p class="panel-desc">Test a policy against the baseline future (without policy) sequentially to generate IEEE research metrics.</p>
+                    
+                    <div class="comparison-setup">
+                        <textarea id="compare-policy-input" placeholder="Enter policy to test..."></textarea>
+                        
+                        <div class="compare-controls">
+                            <select id="compare-duration" class="glass-select">
+                                <option value="30">30 Days (1 Mo)</option>
+                                <option value="90" selected>90 Days (1 Qtr)</option>
+                                <option value="365">365 Days (1 Yr)</option>
+                            </select>
+                            <button id="btn-run-compare" class="btn-secondary"><i class="fas fa-balance-scale"></i> Run Test</button>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-loading hidden" id="compare-loading">
+                        <div class="spinner"></div>
+                        <p>Running sequential simulation...</p>
+                        <div class="progress-bar-container mt-2">
+                            <div class="progress-bar upward" id="compare-progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="comparison-results hidden" id="compare-results">
+                        <div class="result-score">
+                            <h3>Policy Effectiveness Score</h3>
+                            <div class="score-circle" id="compare-score">85</div>
+                        </div>
+                        
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Baseline</th>
+                                    <th>Policy</th>
+                                    <th>Δ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="compare-table-body">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                        
+                        <button id="btn-export-csv" class="btn-outline mt-4 w-100"><i class="fas fa-download"></i> Export Data Tables to CSV</button>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+    </div>
+
+    <!-- Application Script -->
+    <script src="app.js?v=2"></script>
+</body>
+</html>
